@@ -4,16 +4,16 @@ export const siteConfig = {
   firstName: "César",
   title: "Ingeniero en Sistemas Computacionales | Desarrollador Fullstack",
   description:
-    "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes, con un enfoque en la confiabilidad, el rendimiento y escribir código limpio.",
+    "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes y escalables.",
   location: "México",
   remoteLabel: "Disponible Remoto",
   email: "cesar@example.com",
   github: "https://github.com/CesarBR",
   linkedin: "https://linkedin.com/in/cesarbr",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/profilef-2.png",
   available: true,
   stats: [
-    { value: "2+", label: "años de experiencia" },
+    { value: "1.3", label: "años de experiencia" },
     { value: "10+", label: "proyectos" },
     { value: "8+", label: "tecnologías" },
   ],
@@ -44,12 +44,8 @@ export const techCategories: TechCategory[] = [
     items: [
       { name: "JavaScript", icon: "javascript" },
       { name: "TypeScript", icon: "typescript" },
-      { name: "Python", icon: "python" },
-      { name: "Java", icon: "java" },
-      { name: "C#", icon: "csharp" },
       { name: "SQL", icon: "sql" },
-      { name: "PHP", icon: "php" },
-      { name: "C++", icon: "cplusplus" },
+      { name: "Python", icon: "python" },
     ],
   },
   {
@@ -60,8 +56,6 @@ export const techCategories: TechCategory[] = [
       { name: "HTML5", icon: "html5" },
       { name: "CSS3", icon: "css3" },
       { name: "Tailwind", icon: "tailwind" },
-      { name: "Sass", icon: "sass" },
-      { name: "Angular", icon: "angular" },
     ],
   },
   {
@@ -70,9 +64,7 @@ export const techCategories: TechCategory[] = [
       { name: "Node.js", icon: "nodejs" },
       { name: "NestJS", icon: "nestjs" },
       { name: "Django", icon: "django" },
-      { name: ".NET", icon: "dotnet" },
       { name: "PostgreSQL", icon: "postgresql" },
-      { name: "MongoDB", icon: "mongodb" },
       { name: "GraphQL", icon: "graphql" },
       { name: "Supabase", icon: "supabase" },
     ],
@@ -80,12 +72,10 @@ export const techCategories: TechCategory[] = [
   {
     title: "Herramientas & DevOps",
     items: [
-      { name: "Git", icon: "git" },
       { name: "Docker", icon: "docker" },
       { name: "GitHub", icon: "github" },
       { name: "Postman", icon: "postman" },
       { name: "Linux", icon: "linux" },
-      { name: "AWS", icon: "aws" },
       { name: "Firebase", icon: "firebase" },
     ],
   },
@@ -93,11 +83,16 @@ export const techCategories: TechCategory[] = [
     title: "Diseño & Otros",
     items: [
       { name: "Figma", icon: "figma" },
-      { name: "Illustrator", icon: "illustrator" },
+      { name: "Obsidian", icon: "obsidian" },
       { name: "VS Code", icon: "vscode" },
-      { name: "LaTeX", icon: "latex" },
       { name: "Markdown", icon: "markdown" },
       { name: "Notion", icon: "notion" },
+    ],
+  },
+  {
+    title: "En proceso de aprendizaje",
+    items: [
+      { name: "AWS", icon: "aws" },
     ],
   },
 ];

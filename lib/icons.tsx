@@ -171,6 +171,12 @@ const iconMap: Record<string, React.FC<IconProps>> = {
       <path d="M251 116l-51-51c-4-4-11-4-15 0l-11 11 19 19c4-1 10-1 14 3s4 10 3 14l18 18c4-1 10-1 14 3s4 11 1 16c-4 5-11 6-16 2s-6-11-2-16l-17-17v44c4 2 8 6 8 11s-3 9-8 11c-5 3-12 2-16-2s-4-11-1-16c2-3 6-5 10-6v-45c-4-2-7-5-9-9l-19 19c4 5 4 13-2 18s-13 5-18 1c-4-3-6-9-4-14s7-8 13-8c2 0 3 0 5 1l18-18-45-45-45 45 18 18c2-1 3-1 5-1 14 0 17 18 8 26s-18 8-26-2-8-19 2-26l19-19L5 131c-4-4-4-11 0-15l113-113c4-4 11-4 15 0l113 113c4 4 4 11 0 15l15-15z" fill="#F05133"/>
     </svg>
   ),
+  github: ({ className, size = 24 }) => (
+    <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
+      <rect width="256" height="256" fill="#181717" rx="24"/>
+      <path d="M128 24C71 24 24 71 24 128c0 46 30 85 71 99 5 1 7-2 7-5v-18c-29 6-35-14-35-14-5-12-11-15-11-15-9-6 1-6 1-6 10 1 16 10 16 10 9 16 24 11 30 9l1-7c-11-4-22-11-22-25 0-15 11-21 11-22l1-9s-8-2-16 9c-4-11-2-18-1-21 0 0 7-2 22 9 6-2 13-2 19-3s14 1 19 3c15-11 22-9 22-9 1 3 3 10-1 21-8-11-16-9-16-9l1 9c0 1 11 7 11 22 0 14-11 21-22 25s-8 3-9 5c2 1 3 6 3 11v17c0 3 2 6 7 5 41-14 71-53 71-99 0-57-47-104-104-104z" fill="#fff"/>
+    </svg>
+  ),
   docker: ({ className, size = 24 }) => (
     <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
       <rect width="256" height="256" fill="#2496ED" rx="24"/>
@@ -254,6 +260,14 @@ const iconMap: Record<string, React.FC<IconProps>> = {
     <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
       <rect width="256" height="256" fill="#fff" rx="24"/>
       <path d="M70 66l90 15v110l-11 6-83-14V75l4-9zm91 15l22-14c3-2 6-2 9-1l16 2 2 3v128l-7 18-16 2-46 7V87l3-6h17zm-99 19v110l61 10 5-2V89l-66-9z" fill="#000"/>
+    </svg>
+  ),
+  obsidian: ({ className, size = 24 }) => (
+    <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
+      <rect width="256" height="256" fill="#7C3AED" rx="24"/>
+      <path d="M128 24L56 64l24 76-24 52 72 40 72-40-24-52 24-76L128 24z" fill="#D8B4FE"/>
+      <path d="M128 44L72 76l16 60-16 40 56 28 56-28-16-40 16-60L128 44z" fill="#7C3AED"/>
+      <path d="M128 88l-12 36v40l12 12 12-12v-40l-12-36z" fill="#D8B4FE"/>
     </svg>
   ),
 };

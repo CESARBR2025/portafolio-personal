@@ -25,7 +25,7 @@ export default function About() {
               Soy {siteConfig.firstName}, {siteConfig.title.toLowerCase()}. Me especializo en transformar ideas complejas en experiencias digitales intuitivas, rápidas y escalables.
             </p>
             <p className="text-base md:text-lg leading-relaxed text-slate-400">
-              Mi enfoque técnico se complementa con un profundo interés en el diseño UI/UX, asegurando que cada aplicación no solo tenga un código impecable, sino que se sienta increíble al usarla.
+              Mi enfoque técnico se complementa con una metodología arquitectónica de análisis complejo, asegurando que cada aplicación sea como te la imaginaste.
             </p>
           </div>
           <div className="md:col-span-2">

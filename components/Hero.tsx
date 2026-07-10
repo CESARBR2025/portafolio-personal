@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { siteConfig } from "@/lib/data";
 
 const ROLES = [
   "Desarrollador Fullstack.",
-  "Ingeniero de Software.",
+  "Ingeniero en Sistemas.",
   "Solucionador de Problemas.",
 ];
 
@@ -110,9 +111,6 @@ export default function Hero() {
             <span className="px-4 py-1.5 rounded-full border text-sm font-medium border-white/10 bg-white/5 text-slate-400">
               Disponible para proyectos
             </span>
-            <span className="px-4 py-1.5 rounded-full border text-sm font-medium border-white/10 bg-white/5 text-slate-400">
-              Trabajando globalmente
-            </span>
           </div>
 
           <p className="text-base md:text-lg leading-relaxed mb-10 text-slate-400 max-w-xl">
@@ -137,12 +135,16 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative w-56 h-56 md:w-[320px] md:h-[320px] shrink-0 animate-fade-in-up animation-delay-200">
+        <div className="relative w-64 h-64 md:w-[360px] md:h-[360px] shrink-0 animate-fade-in-up animation-delay-200">
           <div className="relative w-full h-full rounded-full p-2 bg-indigo-500/10 shadow-[0_0_50px_rgba(99,102,241,0.2)]">
-            <div className="w-full h-full rounded-full border-[6px] border-[#0A0F1C] overflow-hidden bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
-              <span className="text-5xl md:text-7xl font-bold text-indigo-500/30">
-                {siteConfig.firstName.charAt(0)}
-              </span>
+            <div className="w-full h-full rounded-full border-[6px] border-[#0A0F1C] overflow-hidden relative">
+              <Image
+                src={siteConfig.avatar}
+                alt={siteConfig.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 256px, 360px"
+              />
             </div>
           </div>
 
@@ -152,7 +154,11 @@ export default function Hero() {
             </svg>
           </div>
 
-          <div className="absolute -bottom-4 -left-4 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center animate-float-2">
+          <div className="absolute -top-4 -left-6 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center animate-float-2 overflow-hidden">
+            <span className="text-lg md:text-2xl">🇲🇽</span>
+          </div>
+
+          <div className="absolute -bottom-4 -left-4 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center animate-float-2" style={{ animationDelay: '0.5s' }}>
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" className="text-purple-400">
               <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
