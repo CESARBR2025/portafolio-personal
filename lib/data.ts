@@ -110,13 +110,31 @@ export interface TimelineEntry {
 
 export const timelineData: TimelineEntry[] = [
   {
-    type: "Trabajo Remoto",
-    year: "2025 — 2026",
+    type: "Trabajo",
+    year: "Ene 2026 — Actualidad",
     title: "Desarrollador Fullstack",
-    subtitle: "Empresa Tecnológica (México)",
+    subtitle: "Depto. de Desarrollo de Software, Presidencia de San Juan del Río, Querétaro",
     description: "Desarrollé sistemas escalables con React, Node.js y PostgreSQL. Implementé CI/CD y microservicios que mejoraron la eficiencia del equipo en un 40%.",
     flags: ["mx"],
-    tech: ["react", "nodejs", "postgresql", "docker"],
+    tech: ["nextjs", "typescript", "postgresql", "supabase", "obsidian"],
+  },
+  {
+    type: "Trabajo",
+    year: "Oct — Dic 2025",
+    title: "Desarrollador Fullstack",
+    subtitle: "Xelex Industrial, San Juan del Río, Querétaro",
+    description: "Implementación de herramientas internas para la gestión de la empresa. Desarrollo de software para mesa de TI. Implementación de arquitectura para redes y servidores. Desarrollo de herramienta para control de nómina vía correo electrónico.",
+    flags: ["mx"],
+    tech: ["react", "typescript", "postgresql", "docker"],
+  },
+  {
+    type: "Trabajo",
+    year: "Sep 2024 — Jun 2025",
+    title: "Desarrollador Fullstack",
+    subtitle: "IMBERA SJR, San Juan del Río, Querétaro",
+    description: "Migración y eliminación de dependencia de software TABLEAU para análisis de KPIs. Migración a dashboards estratégicos en plataforma operacional internacional Consola Solkos.",
+    flags: ["mx"],
+    tech: ["python", "react", "django", "postgresql"],
   },
   {
     type: "Trabajo Freelance",

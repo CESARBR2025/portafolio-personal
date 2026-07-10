@@ -46,12 +46,25 @@ const iconMap: Record<string, string> = {
   vscode: `${CDN_BASE}/vscode/vscode-original.svg`,
   notion: `${CDN_BASE}/notion/notion-original.svg`,
   obsidian: `${CDN_BASE}/obsidian/obsidian-original.svg`,
+  pandas: `${CDN_BASE}/pandas/pandas-original.svg`,
   flutter: `${CDN_BASE}/flutter/flutter-original.svg`,
   expo: `${CDN_BASE}/expo/expo-original.svg`,
 };
 
 export function IconImage({ name, size = 24, className = "" }: { name: string; size?: number; className?: string }) {
   const src = iconMap[name];
+
+  if (name === "obsidian") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 256 256" className={`shrink-0 ${className}`}>
+        <rect width="256" height="256" fill="#7C3AED" rx="24"/>
+        <path d="M128 32L60 68l20 64-20 44 68 48 68-48-20-44 20-64L128 32z" fill="#D8B4FE"/>
+        <path d="M128 52L76 80l14 48-14 32 52 36 52-36-14-32 14-48L128 52z" fill="#7C3AED"/>
+        <path d="M128 84l-10 32v32l10 10 10-10v-32l-10-32z" fill="#D8B4FE"/>
+      </svg>
+    );
+  }
+
   if (!src) return null;
   return (
     <Image
