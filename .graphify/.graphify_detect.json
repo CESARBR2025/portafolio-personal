@@ -1,0 +1,70 @@
+{
+  "files": {
+    "code": [
+      "app/layout.tsx",
+      "app/page.tsx",
+      "components/About.tsx",
+      "components/Contact.tsx",
+      "components/Footer.tsx",
+      "components/Hero.tsx",
+      "components/Journey.tsx",
+      "components/Nav.tsx",
+      "components/Projects.tsx",
+      "components/ui/ProjectCard.tsx",
+      "components/ui/SectionHeading.tsx",
+      "components/ui/TechMarquee.tsx",
+      "components/ui/TimelineItem.tsx",
+      "components/ui/Typewriter.tsx",
+      "eslint.config.mjs",
+      "lib/data.ts",
+      "lib/icons.tsx",
+      "next.config.ts",
+      "postcss.config.mjs"
+    ],
+    "document": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md"
+    ],
+    "paper": [],
+    "image": [
+      "public/file.svg",
+      "public/globe.svg",
+      "public/next.svg",
+      "public/vercel.svg",
+      "public/window.svg"
+    ],
+    "video": []
+  },
+  "total_files": 27,
+  "total_words": 9130,
+  "needs_graph": false,
+  "warning": "Corpus is ~9,130 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "graphifyignore_patterns": 27,
+  "git": {
+    "source_owner": "git",
+    "source_hash": "1342ed7c7f6933afe5f1ef97066ad5f7ddca289e",
+    "branches": [
+      "main"
+    ],
+    "max_commits": 200,
+    "active_within_days": 30
+  },
+  "scope": {
+    "requested_mode": "auto",
+    "resolved_mode": "committed",
+    "source": "default-auto",
+    "root": ".",
+    "git_root": ".",
+    "head": "1342ed7c7f6933afe5f1ef97066ad5f7ddca289e",
+    "candidate_count": 33,
+    "included_count": 27,
+    "excluded_untracked_count": 26,
+    "excluded_ignored_count": 42511,
+    "excluded_sensitive_count": 0,
+    "missing_committed_count": 0,
+    "warnings": [],
+    "recommendation": "Use --scope all or graphify.yaml inputs.corpus for a knowledge-base folder."
+  }
+}

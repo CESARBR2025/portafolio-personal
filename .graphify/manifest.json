@@ -1,0 +1,110 @@
+{
+  "app/layout.tsx": {
+    "mtime": 1783715265855.2449,
+    "hash": "006af77b7adaef4147e9b0d0101f8241"
+  },
+  "app/page.tsx": {
+    "mtime": 1783714959764.5833,
+    "hash": "c2c8e04f340a6eb09f4dce6156af7079"
+  },
+  "components/About.tsx": {
+    "mtime": 1783714911967.116,
+    "hash": "1d2ba5bbbe28ed3556eff838dff686c5"
+  },
+  "components/Contact.tsx": {
+    "mtime": 1783714935894.5894,
+    "hash": "d84d7d63fe57d28fd948535048fede96"
+  },
+  "components/Footer.tsx": {
+    "mtime": 1783714995071.3215,
+    "hash": "6b942aede5991b5efce170055dc1b442"
+  },
+  "components/Hero.tsx": {
+    "mtime": 1783715189210.1543,
+    "hash": "ceb342b7adc2008b96014429a1ada04b"
+  },
+  "components/Journey.tsx": {
+    "mtime": 1783714913748.2312,
+    "hash": "bc4f13ae7e8286053be5c972983d7c3c"
+  },
+  "components/Nav.tsx": {
+    "mtime": 1783714888431.591,
+    "hash": "daf5c593cb4d4f155c54067eff0e8b65"
+  },
+  "components/Projects.tsx": {
+    "mtime": 1783715013561.2278,
+    "hash": "d635cddc6eb3bc6c6b7f43378a34be62"
+  },
+  "components/ui/ProjectCard.tsx": {
+    "mtime": 1783714981682.2585,
+    "hash": "2ab93b191a8e09c7d9f39e1e657eb731"
+  },
+  "components/ui/SectionHeading.tsx": {
+    "mtime": 1783714859095.558,
+    "hash": "369eae926c8363b7d3940c5ceafeab36"
+  },
+  "components/ui/TechMarquee.tsx": {
+    "mtime": 1783714857376.0327,
+    "hash": "13978a86a79eddc6e39271193f60d8d7"
+  },
+  "components/ui/TimelineItem.tsx": {
+    "mtime": 1783715046301.882,
+    "hash": "a9aeccf6ca6390fab3cec77c4a62985e"
+  },
+  "components/ui/Typewriter.tsx": {
+    "mtime": 1783715035921.4463,
+    "hash": "34e4404469175b5741839e37bbc34de4"
+  },
+  "eslint.config.mjs": {
+    "mtime": 1783714045020.963,
+    "hash": "dfa1f5f6a7037bf39dc510f30b180002"
+  },
+  "lib/data.ts": {
+    "mtime": 1783714657713.576,
+    "hash": "e96e374aa2696948900feb0da7df8e0b"
+  },
+  "lib/icons.tsx": {
+    "mtime": 1783714841547.82,
+    "hash": "487d9691a1bdda1c5a281a674ecaeb49"
+  },
+  "next.config.ts": {
+    "mtime": 1783714045020.7495,
+    "hash": "9b77af189a21a7a64e4bd7a426f64176"
+  },
+  "postcss.config.mjs": {
+    "mtime": 1783714045020.8337,
+    "hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "AGENTS.md": {
+    "mtime": 1783715558596.371,
+    "hash": "a3a0813bd472549ccf391ec37b6feaec"
+  },
+  "CLAUDE.md": {
+    "mtime": 1783714075639.5337,
+    "hash": "5c27369b226fcf2be8a6cfe52224e767"
+  },
+  "README.md": {
+    "mtime": 1783714045020.2039,
+    "hash": "f15aaa42d5d299d091b1171097ea56ad"
+  },
+  "public/file.svg": {
+    "mtime": 1783714045021.1047,
+    "hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "public/globe.svg": {
+    "mtime": 1783714045021.7185,
+    "hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "public/next.svg": {
+    "mtime": 1783714045021.4712,
+    "hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "public/vercel.svg": {
+    "mtime": 1783714045021.5144,
+    "hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "public/window.svg": {
+    "mtime": 1783714045021.7512,
+    "hash": "a2760511c65806022ad20adf74370ff3"
+  }
+}

@@ -1,75 +1,109 @@
 export const siteConfig = {
-  name: "CesarBR",
-  fullName: "César Iván Bárcenas Rosales",
-  tagline: "Ingeniero en Sistemas Computacionales | Desarrollador Fullstack",
+  alias: "CesarBR",
+  name: "César Iván Bárcenas Rosales",
+  firstName: "César",
+  title: "Ingeniero en Sistemas Computacionales | Desarrollador Fullstack",
   description:
     "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes, con un enfoque en la confiabilidad, el rendimiento y escribir código limpio.",
   location: "México",
-  remote: "Disponible Remoto",
+  remoteLabel: "Disponible Remoto",
   email: "cesar@example.com",
   github: "https://github.com/CesarBR",
   linkedin: "https://linkedin.com/in/cesarbr",
-  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  avatar: "/images/avatar.jpg",
   available: true,
-  yearsExperience: "2+",
-  status: "Disponible para proyectos",
-  workingGlobally: "Trabajando globalmente",
+  stats: [
+    { value: "2+", label: "años de experiencia" },
+    { value: "10+", label: "proyectos" },
+    { value: "8+", label: "tecnologías" },
+  ],
 };
 
 export const roles = [
-  "Desarrollador Fullstack",
-  "Ingeniero de Software",
-  "Backend Developer",
-  "Frontend Developer",
+  "Desarrollador Fullstack.",
+  "Ingeniero de Software.",
+  "Solucionador de Problemas.",
 ];
 
 export const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#sobre-mi", label: "Sobre mí" },
-  { href: "#trayectoria", label: "Trayectoria" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "home", label: "Inicio" },
+  { href: "about", label: "Sobre mí" },
+  { href: "education", label: "Trayectoria" },
+  { href: "projects", label: "Proyectos" },
+  { href: "contact", label: "Contacto" },
 ];
 
 export interface TechCategory {
   title: string;
-  items: string[];
+  items: { name: string; icon: string }[];
 }
 
 export const techCategories: TechCategory[] = [
   {
     title: "Lenguajes de Programación",
     items: [
-      "javascript", "typescript", "python", "java", "csharp",
-      "sql", "php", "go",
+      { name: "JavaScript", icon: "javascript" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Python", icon: "python" },
+      { name: "Java", icon: "java" },
+      { name: "C#", icon: "csharp" },
+      { name: "SQL", icon: "sql" },
+      { name: "PHP", icon: "php" },
+      { name: "C++", icon: "cplusplus" },
     ],
   },
   {
     title: "Frontend & Mobile",
     items: [
-      "react", "nextjs", "html5", "css3", "tailwind",
-      "sass", "angular", "bootstrap",
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "HTML5", icon: "html5" },
+      { name: "CSS3", icon: "css3" },
+      { name: "Tailwind", icon: "tailwind" },
+      { name: "Sass", icon: "sass" },
+      { name: "Angular", icon: "angular" },
     ],
   },
   {
     title: "Backend & Frameworks",
     items: [
-      "nodejs", "nestjs", "django", "dotnet", "postgresql",
-      "mysql", "mongodb", "graphql", "supabase",
+      { name: "Node.js", icon: "nodejs" },
+      { name: "NestJS", icon: "nestjs" },
+      { name: "Django", icon: "django" },
+      { name: ".NET", icon: "dotnet" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "GraphQL", icon: "graphql" },
+      { name: "Supabase", icon: "supabase" },
     ],
   },
   {
     title: "Herramientas & DevOps",
-    items: ["git", "docker", "npm", "postman", "linux", "aws", "firebase"],
+    items: [
+      { name: "Git", icon: "git" },
+      { name: "Docker", icon: "docker" },
+      { name: "GitHub", icon: "github" },
+      { name: "Postman", icon: "postman" },
+      { name: "Linux", icon: "linux" },
+      { name: "AWS", icon: "aws" },
+      { name: "Firebase", icon: "firebase" },
+    ],
   },
   {
     title: "Diseño & Otros",
-    items: ["figma", "illustrator", "latex", "markdown", "vscode", "notion"],
+    items: [
+      { name: "Figma", icon: "figma" },
+      { name: "Illustrator", icon: "illustrator" },
+      { name: "VS Code", icon: "vscode" },
+      { name: "LaTeX", icon: "latex" },
+      { name: "Markdown", icon: "markdown" },
+      { name: "Notion", icon: "notion" },
+    ],
   },
 ];
 
-export interface TimelineItem {
-  type: "Trabajo Remoto" | "Trabajo Freelance" | "Educación" | "Voluntariado" | "Competición" | "Certificación";
+export interface TimelineEntry {
+  type: "Trabajo Remoto" | "Trabajo" | "Trabajo Freelance" | "Trabajo Voluntariado" | "Voluntariado" | "Voluntariado Universitario" | "Educación" | "Competición" | "Certificación";
   year: string;
   title: string;
   subtitle: string;
@@ -79,14 +113,13 @@ export interface TimelineItem {
   image?: string;
 }
 
-export const timelineData: TimelineItem[] = [
+export const timelineData: TimelineEntry[] = [
   {
     type: "Trabajo Remoto",
-    year: "2025",
+    year: "2025 — 2026",
     title: "Desarrollador Fullstack",
     subtitle: "Empresa Tecnológica (México)",
-    description:
-      "Desarrollé sistemas web escalables utilizando React, Node.js y PostgreSQL. Implementé CI/CD pipelines y microservicios para mejorar la eficiencia del equipo.",
+    description: "Desarrollé sistemas escalables con React, Node.js y PostgreSQL. Implementé CI/CD y microservicios que mejoraron la eficiencia del equipo en un 40%.",
     flags: ["mx"],
     tech: ["react", "nodejs", "postgresql", "docker"],
   },
@@ -95,8 +128,7 @@ export const timelineData: TimelineItem[] = [
     year: "2025",
     title: "Sistema de Gestión Empresarial",
     subtitle: "Cliente Empresarial",
-    description:
-      "Desarrollé un sistema integral de gestión para una empresa mediana, incluyendo módulos de inventario, ventas y reportes automatizados con generación de PDF.",
+    description: "Desarrollé un sistema integral de gestión con módulos de inventario, ventas, reportes automatizados y generación de PDF. Redujo los tiempos operativos en un 60%.",
     tech: ["nextjs", "typescript", "supabase", "tailwind"],
   },
   {
@@ -104,8 +136,7 @@ export const timelineData: TimelineItem[] = [
     year: "2024",
     title: "Certificación AWS Cloud Practitioner",
     subtitle: "Amazon Web Services",
-    description:
-      "Obtuve la certificación oficial de AWS Cloud Practitioner, validando mis conocimientos en fundamentos de infraestructura en la nube, servicios core de AWS, arquitectura y mejores prácticas.",
+    description: "Obtuve la certificación oficial validando conocimientos en infraestructura cloud, servicios core de AWS, arquitectura y mejores prácticas de seguridad.",
     tech: ["aws"],
   },
   {
@@ -113,36 +144,32 @@ export const timelineData: TimelineItem[] = [
     year: "2024",
     title: "Mentor de Programación",
     subtitle: "Comunidad de Desarrollo Local",
-    description:
-      "Lideré sesiones de mentoría enseñando desarrollo web a estudiantes universitarios. Proceso que culminó en un hackathon local con 50+ participantes.",
+    description: "Lideré sesiones de mentoría enseñando desarrollo web a 30+ estudiantes universitarios. Organicé un hackathon local con gran participación.",
     tech: ["javascript", "react", "git"],
   },
   {
     type: "Trabajo Freelance",
     year: "2023",
-    title: "Plataforma E-commerce",
+    title: "Plataforma E-Commerce",
     subtitle: "Tienda Online",
-    description:
-      "Diseñé y desarrollé una plataforma de e-commerce completa con carrito de compras, pasarela de pagos y panel de administración personalizado.",
+    description: "Diseñé y desarrollé una plataforma e-commerce completa con carrito de compras, pasarela de pagos Stripe y panel de administración personalizado.",
     tech: ["nextjs", "nodejs", "mongodb", "tailwind"],
     flags: ["mx"],
   },
   {
     type: "Educación",
-    year: "2023",
+    year: "2023 — Actualidad",
     title: "Ingeniería en Sistemas Computacionales",
     subtitle: "Universidad",
-    description:
-      "Formación académica con enfoque en arquitectura de software, bases de datos, análisis de algoritmos, patrones de diseño y desarrollo web fullstack.",
+    description: "Formación académica con enfoque en arquitectura de software, bases de datos, análisis de algoritmos, patrones de diseño y desarrollo web fullstack.",
     tech: ["java", "python", "sql"],
   },
   {
     type: "Competición",
     year: "2023",
-    title: "Hackathon de Innovación",
-    subtitle: "Competencia Nacional",
-    description:
-      "Participé en un hackathon nacional desarrollando una solución digital innovadora en 48 horas. Finalista entre más de 100 equipos participantes.",
+    title: "Hackathon Nacional de Innovación",
+    subtitle: "Finalista entre 100+ equipos",
+    description: "Desarrollé una solución digital innovadora en 48 horas compitiendo contra equipos de todo el país. Finalista en la categoría de impacto social.",
     tech: ["react", "nodejs", "figma"],
     flags: ["mx"],
   },
@@ -156,71 +183,67 @@ export interface Project {
   image: string;
   featured?: boolean;
   status?: string;
+  video?: boolean;
 }
 
 export const projects: Project[] = [
   {
     title: "Sistema de Gestión Empresarial",
-    description:
-      "Plataforma integral para la gestión de inventarios, ventas y reportes automatizados. Incluye dashboard en tiempo real, generación de PDF y notificaciones por correo electrónico.",
+    description: "Plataforma integral para gestión de inventarios, ventas y reportes automatizados con dashboard en tiempo real, generación de PDF y notificaciones por email. Arquitectura escalable con microservicios.",
     tech: ["nextjs", "typescript", "supabase", "tailwind"],
     links: [
-      { label: "Código Fuente", url: "https://github.com/CesarBR/proyecto-1" },
-      { label: "Visitar Web", url: "https://proyecto-1.vercel.app" },
+      { label: "Código Fuente", url: "https://github.com/CesarBR" },
+      { label: "Visitar Web", url: "https://vercel.com" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project1.jpg",
     featured: true,
   },
   {
     title: "E-Commerce Platform",
-    description:
-      "Tienda online completa con carrito de compras, pasarela de pagos integrada, panel de administración y dashboard de analytics. Optimizada para SEO y rendimiento.",
+    description: "Tienda online completa con carrito de compras, pasarela de pagos Stripe, panel de administración y dashboard de analytics. Optimizada para SEO y rendimiento con Next.js.",
     tech: ["nextjs", "nodejs", "mongodb", "tailwind"],
     links: [
-      { label: "Código Fuente", url: "https://github.com/CesarBR/ecommerce" },
+      { label: "Código Fuente", url: "https://github.com/CesarBR" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project2.jpg",
+    featured: true,
   },
   {
     title: "API REST Microservicios",
-    description:
-      "Arquitectura de microservicios con Node.js y Docker. Incluye autenticación JWT, rate limiting, documentación Swagger y despliegue automatizado con CI/CD.",
+    description: "Arquitectura de microservicios con Node.js y Docker. Autenticación JWT, rate limiting, documentación Swagger y CI/CD con GitHub Actions.",
     tech: ["nodejs", "nestjs", "postgresql", "docker"],
     links: [
-      { label: "Repo", url: "https://github.com/CesarBR/microservices-api" },
+      { label: "Repo", url: "https://github.com/CesarBR" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project3.jpg",
     status: "En Desarrollo",
   },
   {
     title: "Dashboard Analytics",
-    description:
-      "Panel de visualización de datos con gráficos interactivos, exportación de reportes y filtros dinámicos. Construido con React y D3.js.",
+    description: "Panel de visualización de datos con gráficos interactivos, exportación de reportes y filtros dinámicos.",
     tech: ["react", "typescript", "tailwind", "postgresql"],
     links: [
-      { label: "Repo", url: "https://github.com/CesarBR/dashboard" },
-      { label: "Web", url: "https://dashboard-demo.vercel.app" },
+      { label: "Repo", url: "https://github.com/CesarBR" },
+      { label: "Web", url: "https://vercel.com" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project4.jpg",
   },
   {
-    title: "Aplicación Móvil React Native",
-    description:
-      "App multiplataforma con notificaciones push, geolocalización, chat en tiempo real y sincronización offline. Publicada en App Store y Google Play.",
+    title: "Aplicación Móvil Cross-Platform",
+    description: "App multiplataforma con notificaciones push, geolocalización y sincronización offline.",
     tech: ["react", "nodejs", "firebase", "typescript"],
     links: [
-      { label: "Repo", url: "https://github.com/CesarBR/mobile-app" },
+      { label: "Repo", url: "https://github.com/CesarBR" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project5.jpg",
   },
   {
-    title: "Sistema de Automatización",
-    description:
-      "Scripts avanzados para automatización de procesos empresariales, procesamiento de datos masivos y generación de reportes. Reducción del 90% en tiempo de procesamiento manual.",
+    title: "Sistema de Automatización de Datos",
+    description: "Scripts avanzados para automatización de procesos, procesamiento de datos masivos y reducción del 90% en tiempo de procesamiento manual.",
     tech: ["python", "sql", "docker", "aws"],
     links: [
-      { label: "Repo", url: "https://github.com/CesarBR/automation" },
+      { label: "Repo", url: "https://github.com/CesarBR" },
     ],
-    image: "/images/project-mockup.svg",
+    image: "/images/project6.jpg",
   },
 ];
