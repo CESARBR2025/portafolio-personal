@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getIcon } from "@/lib/icons";
+import { IconImage } from "@/lib/icons";
 import { timelineData, type TimelineEntry } from "@/lib/data";
 
 const flagMap: Record<string, string> = {
@@ -71,15 +71,12 @@ function TimelineItemComponent({ item }: { item: TimelineEntry }) {
             <p className="text-sm text-slate-400 mb-3">{item.subtitle}</p>
             <p className="text-sm text-slate-500 leading-relaxed mb-4">{item.description}</p>
             <div className="flex flex-wrap gap-1.5">
-              {item.tech.map((t) => {
-                const Icon = getIcon(t);
-                return (
+              {item.tech.map((t) => (
                   <span key={t} className="flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full border bg-white/5 text-slate-300 border-white/10">
-                    <Icon size={12} className="opacity-70" />
+                    <IconImage name={t} size={12} className="opacity-70" />
                     {t === "csharp" ? "C#" : t === "nextjs" ? "Next.js" : t === "nestjs" ? "NestJS" : t.charAt(0).toUpperCase() + t.slice(1)}
                   </span>
-                );
-              })}
+                ))}
             </div>
           </div>
 

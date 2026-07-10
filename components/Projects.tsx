@@ -1,7 +1,7 @@
 "use client";
 
 import { projects } from "@/lib/data";
-import { getIcon } from "@/lib/icons";
+import { IconImage } from "@/lib/icons";
 
 export default function Projects() {
   const featured = projects.filter((p) => p.featured);
@@ -37,10 +37,9 @@ export default function Projects() {
                       <div className="text-center">
                         <div className="text-indigo-400 font-mono text-sm mb-3">[{project.title}]</div>
                         <div className="flex gap-2 justify-center opacity-40 scale-75">
-                          {project.tech.slice(0, 4).map((t) => {
-                            const Icon = getIcon(t);
-                            return <Icon key={t} size={28} />;
-                          })}
+                          {project.tech.slice(0, 4).map((t) => (
+                            <IconImage key={t} name={t} size={28} />
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -97,10 +96,9 @@ export default function Projects() {
                   <div className="text-center opacity-50 group-hover:opacity-70 transition-opacity">
                     <div className="text-indigo-400 font-mono text-xs mb-2">[{project.title}]</div>
                     <div className="flex gap-1.5 justify-center scale-75">
-                      {project.tech.slice(0, 3).map((t) => {
-                        const Icon = getIcon(t);
-                        return <Icon key={t} size={20} />;
-                      })}
+                      {project.tech.slice(0, 3).map((t) => (
+                        <IconImage key={t} name={t} size={20} />
+                      ))}
                     </div>
                   </div>
                 </div>
