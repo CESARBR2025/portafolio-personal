@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { projects } from "@/lib/data";
 import { IconImage } from "@/lib/icons";
 
@@ -28,20 +29,19 @@ export default function Projects() {
                       transformStyle: "preserve-3d",
                     }}
                   >
-                    <div className="w-full h-8 flex items-center px-4 gap-2 border-b bg-[#1e293b] border-white/10">
+                    <div className="w-full h-8 flex items-center px-4 gap-2 border-b bg-[#1e293b]/90 border-white/10 absolute top-0 left-0 right-0 z-10">
                       <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                       <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                       <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                     </div>
-                    <div className="w-full aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-indigo-400 font-mono text-sm mb-3">[{project.title}]</div>
-                        <div className="flex gap-2 justify-center opacity-40 scale-75">
-                          {project.tech.slice(0, 4).map((t) => (
-                            <IconImage key={t} name={t} size={28} />
-                          ))}
-                        </div>
-                      </div>
+                    <div className="w-full aspect-video relative">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
                     </div>
                   </div>
                 </div>
@@ -56,13 +56,16 @@ export default function Projects() {
                 <h3 className="text-3xl md:text-5xl font-extrabold mb-6 text-white group-hover:text-indigo-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-base md:text-lg leading-relaxed mb-8 text-slate-400">
-                  {project.description}
-                </p>
+                <div className="text-base md:text-lg leading-relaxed mb-8 text-slate-400 space-y-1">
+                  {project.description.split('\n').map((line, i) => (
+                    <p key={i}>{line || '\u00A0'}</p>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-3 mb-10">
                   {project.tech.map((t) => (
-                    <span key={t} className="text-sm font-medium px-4 py-2 rounded-full bg-white/10 text-slate-200 border border-white/5">
-                      {t === "csharp" ? "C#" : t === "nextjs" ? "Next.js" : t === "nestjs" ? "NestJS" : t.charAt(0).toUpperCase() + t.slice(1)}
+                    <span key={t} className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full bg-white/10 text-slate-200 border border-white/5">
+                      <IconImage name={t} size={16} className="shrink-0" />
+                      {t === "csharp" ? "C#" : t === "nextjs" ? "Next.js" : t === "nestjs" ? "NestJS" : t === "graphify" ? "Graphify" : t.charAt(0).toUpperCase() + t.slice(1)}
                     </span>
                   ))}
                 </div>
@@ -79,7 +82,17 @@ export default function Projects() {
                           : "border border-white/20 text-white hover:bg-white/10"
                       }`}
                     >
-                      {link.label}
+                      {link.label.includes("Código") ? (
+                        <span className="flex items-center gap-2">
+                          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                          {link.label}
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-2">
+                          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                          {link.label}
+                        </span>
+                      )}
                     </a>
                   ))}
                 </div>

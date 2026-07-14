@@ -1,21 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
 import { siteConfig } from "@/lib/data";
+import { sendContact } from "@/app/actions/contact";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-    setTimeout(() => {
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 1500);
-  };
+  const [state, formAction, pending] = useActionState(sendContact, undefined);
 
   return (
     <section id="contact" className="py-24 border-t border-white/5">
@@ -31,7 +21,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-start">
           <div>
             <div className="flex flex-col gap-3">
-              <a href={`mailto:${siteConfig.email}`}
+              <a href={`mailto:${siteConfig.email}?subject=Contacto%20desde%20Portafolio&body=Hola%20C%C3%A9sar%2C%0A%0AMe%20gustar%C3%ADa%20conectar%20contigo%20por%20el%20siguiente%20motivo%3A%0A%0A%0A---%0AEnviado%20desde%20tu%20portafolio`}
                  className="w-full p-5 rounded-xl border backdrop-blur-sm transition-all hover:-translate-y-1 bg-[#111827] border-white/10 hover:border-indigo-500/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0">
                   <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" className="text-indigo-400">
@@ -93,50 +83,54 @@ export default function Contact() {
             </div>
 
             <div className="p-6 md:p-8">
-              {status === "idle" && (
-                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+              {!state?.success && (
+                <form action={formAction} className="space-y-6 md:space-y-8">
                   <div className="grid md:grid-cols-2 gap-6">
                     <input
-                      type="text" required placeholder="Ej. César Bárcenas"
-                      value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      name="name" type="text" required placeholder="Ej. César Bárcenas"
                       className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 transition-all"
                     />
                     <input
-                      type="email" required placeholder="email@ejemplo.com"
-                      value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      name="email" type="email" required placeholder="email@ejemplo.com"
                       className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 transition-all"
                     />
                   </div>
                   <textarea
-                    required rows={4} placeholder="Cuéntame sobre tu proyecto, ideas o pregunta..."
-                    value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    name="message" required rows={4} placeholder="Cuéntame sobre tu proyecto, ideas o pregunta..."
                     className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 resize-none transition-all"
                   />
-                  <button type="submit"
-                    className="group relative overflow-hidden w-full px-6 py-3.5 rounded-xl font-bold text-sm bg-indigo-600 text-white hover:bg-indigo-500 hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] transition-all flex items-center justify-center gap-2">
-                    <span>Enviar Mensaje</span>
-                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
-                         className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
-                      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                    </svg>
+
+                  {state?.error && (
+                    <p className="text-rose-400 text-sm">{state.error}</p>
+                  )}
+
+                  <button type="submit" disabled={pending}
+                    className="group relative overflow-hidden w-full px-6 py-3.5 rounded-xl font-bold text-sm bg-indigo-600 text-white hover:bg-indigo-500 hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                    {pending ? (
+                      <>
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+                             className="animate-spin">
+                          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                        </svg>
+                        <span>Enviando...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Enviar Mensaje</span>
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+                             className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
+                          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                        </svg>
+                      </>
+                    )}
                   </button>
                 </form>
               )}
 
-              {status === "sending" && (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <svg width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"
-                       className="text-indigo-400 animate-bounce mb-4">
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                  </svg>
-                  <p className="text-slate-400 font-medium">Enviando...</p>
-                </div>
-              )}
-
-              {status === "sent" && (
+              {state?.success && (
                 <div className="space-y-5 min-h-[300px] flex flex-col justify-end pb-4">
                   <div className="max-w-[85%] self-end rounded-2xl rounded-tr-sm p-5 shadow-lg animate-fade-in-up bg-indigo-600 text-white">
-                    <p className="text-sm leading-relaxed">{form.message || "Hola, me gustaría conectar contigo."}</p>
+                    <p className="text-sm leading-relaxed">Hola, me gustaría conectar contigo.</p>
                   </div>
                   <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm p-4 shadow-sm animate-fade-in-up animation-delay-400 bg-[#1E293B] text-slate-300 border border-white/5 flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center shrink-0 text-white text-xs font-bold">
@@ -145,7 +139,7 @@ export default function Contact() {
                     <div>
                       <div className="text-xs font-bold text-white mb-1">{siteConfig.name}</div>
                       <p className="text-xs text-slate-400 leading-relaxed">Gracias por contactarme. Te responderé pronto.</p>
-                      <span className="text-[10px] text-slate-600 mt-2 block">Auto</span>
+                      <span className="text-[10px] text-slate-600 mt-2 block">Enviado ✓</span>
                     </div>
                   </div>
                 </div>

@@ -49,10 +49,26 @@ const iconMap: Record<string, string> = {
   pandas: `${CDN_BASE}/pandas/pandas-original.svg`,
   flutter: `${CDN_BASE}/flutter/flutter-original.svg`,
   expo: `${CDN_BASE}/expo/expo-original.svg`,
+
 };
 
 export function IconImage({ name, size = 24, className = "" }: { name: string; size?: number; className?: string }) {
   const src = iconMap[name];
+
+  if (name === "graphify") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 ${className}`}>
+        <circle cx="5" cy="12" r="2" className="text-indigo-400"/>
+        <circle cx="12" cy="6" r="2" className="text-indigo-400"/>
+        <circle cx="12" cy="18" r="2" className="text-indigo-400"/>
+        <circle cx="19" cy="12" r="2" className="text-indigo-400"/>
+        <line x1="12" y1="6" x2="5" y2="12" className="text-indigo-400"/>
+        <line x1="12" y1="6" x2="19" y2="12" className="text-indigo-400"/>
+        <line x1="5" y1="12" x2="12" y2="18" className="text-indigo-400"/>
+        <line x1="19" y1="12" x2="12" y2="18" className="text-indigo-400"/>
+      </svg>
+    );
+  }
 
   if (name === "obsidian") {
     return (

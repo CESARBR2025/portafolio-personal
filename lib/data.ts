@@ -7,9 +7,9 @@ export const siteConfig = {
     "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes y escalables.",
   location: "México",
   remoteLabel: "Disponible Remoto",
-  email: "cesar@example.com",
-  github: "https://github.com/CesarBR",
-  linkedin: "https://linkedin.com/in/cesarbr",
+  email: "barcenasrosalescesarivan@gmail.com",
+  github: "https://github.com/CESARBR2025",
+  linkedin: "https://www.linkedin.com/in/cesar-ivan-barcenas-rosales-a74a83378/",
   avatar: "/images/profilef-2.png",
   available: true,
   stats: [
@@ -137,54 +137,12 @@ export const timelineData: TimelineEntry[] = [
     tech: ["python", "react", "django", "postgresql"],
   },
   {
-    type: "Trabajo Freelance",
-    year: "2025",
-    title: "Sistema de Gestión Empresarial",
-    subtitle: "Cliente Empresarial",
-    description: "Desarrollé un sistema integral de gestión con módulos de inventario, ventas, reportes automatizados y generación de PDF. Redujo los tiempos operativos en un 60%.",
-    tech: ["nextjs", "typescript", "supabase", "tailwind"],
-  },
-  {
     type: "Educación",
-    year: "2024",
-    title: "Certificación AWS Cloud Practitioner",
-    subtitle: "Amazon Web Services",
-    description: "Obtuve la certificación oficial validando conocimientos en infraestructura cloud, servicios core de AWS, arquitectura y mejores prácticas de seguridad.",
-    tech: ["aws"],
-  },
-  {
-    type: "Voluntariado",
-    year: "2024",
-    title: "Mentor de Programación",
-    subtitle: "Comunidad de Desarrollo Local",
-    description: "Lideré sesiones de mentoría enseñando desarrollo web a 30+ estudiantes universitarios. Organicé un hackathon local con gran participación.",
-    tech: ["javascript", "react", "git"],
-  },
-  {
-    type: "Trabajo Freelance",
-    year: "2023",
-    title: "Plataforma E-Commerce",
-    subtitle: "Tienda Online",
-    description: "Diseñé y desarrollé una plataforma e-commerce completa con carrito de compras, pasarela de pagos Stripe y panel de administración personalizado.",
-    tech: ["nextjs", "nodejs", "mongodb", "tailwind"],
-    flags: ["mx"],
-  },
-  {
-    type: "Educación",
-    year: "2023 — Actualidad",
+    year: "14 de diciembre del 2025",
     title: "Ingeniería en Sistemas Computacionales",
-    subtitle: "Universidad",
+    subtitle: "ITSJR - Instituto Tecnológico de San Juan del Río",
     description: "Formación académica con enfoque en arquitectura de software, bases de datos, análisis de algoritmos, patrones de diseño y desarrollo web fullstack.",
-    tech: ["java", "python", "sql"],
-  },
-  {
-    type: "Competición",
-    year: "2023",
-    title: "Hackathon Nacional de Innovación",
-    subtitle: "Finalista entre 100+ equipos",
-    description: "Desarrollé una solución digital innovadora en 48 horas compitiendo contra equipos de todo el país. Finalista en la categoría de impacto social.",
-    tech: ["react", "nodejs", "figma"],
-    flags: ["mx"],
+    tech: ["python", "sql", "postgresql", "typescript"],
   },
 ];
 
@@ -201,62 +159,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Sistema de Gestión Empresarial",
-    description: "Plataforma integral para gestión de inventarios, ventas y reportes automatizados con dashboard en tiempo real, generación de PDF y notificaciones por email. Arquitectura escalable con microservicios.",
-    tech: ["nextjs", "typescript", "supabase", "tailwind"],
+    title: "YouMindAG — Contexto para tu AI Coding Tool",
+    description: `Herramienta CLI open-source que inyecta contexto completo de arquitectura a cualquier proyecto en 30 segundos. Una línea (npx youmindag) y tu asistente AI entiende toda la estructura, dependencias y reglas del proyecto.
+
+• +3,000 instalaciones en npm
+• Plugin con 13 mecanismos de contexto para opencode
+• Modo watch, dry-run y desinstalación segura
+• Grafo de conocimiento basado en Graphify
+• 100% open-source · MIT`,
+    tech: ["nodejs", "javascript", "npm", "graphify"],
     links: [
-      { label: "Código Fuente", url: "https://github.com/CesarBR" },
-      { label: "Visitar Web", url: "https://vercel.com" },
+      { label: "Código Fuente", url: "https://github.com/CESARBR2025/youmindag" },
+      { label: "npm", url: "https://www.npmjs.com/package/youmindag" },
     ],
-    image: "/images/project1.jpg",
+    image: "/images/flayer-youmind.png",
     featured: true,
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Tienda online completa con carrito de compras, pasarela de pagos Stripe, panel de administración y dashboard de analytics. Optimizada para SEO y rendimiento con Next.js.",
-    tech: ["nextjs", "nodejs", "mongodb", "tailwind"],
-    links: [
-      { label: "Código Fuente", url: "https://github.com/CesarBR" },
-    ],
-    image: "/images/project2.jpg",
-    featured: true,
-  },
-  {
-    title: "API REST Microservicios",
-    description: "Arquitectura de microservicios con Node.js y Docker. Autenticación JWT, rate limiting, documentación Swagger y CI/CD con GitHub Actions.",
-    tech: ["nodejs", "nestjs", "postgresql", "docker"],
-    links: [
-      { label: "Repo", url: "https://github.com/CesarBR" },
-    ],
-    image: "/images/project3.jpg",
-    status: "En Desarrollo",
-  },
-  {
-    title: "Dashboard Analytics",
-    description: "Panel de visualización de datos con gráficos interactivos, exportación de reportes y filtros dinámicos.",
-    tech: ["react", "typescript", "tailwind", "postgresql"],
-    links: [
-      { label: "Repo", url: "https://github.com/CesarBR" },
-      { label: "Web", url: "https://vercel.com" },
-    ],
-    image: "/images/project4.jpg",
-  },
-  {
-    title: "Aplicación Móvil Cross-Platform",
-    description: "App multiplataforma con notificaciones push, geolocalización y sincronización offline.",
-    tech: ["react", "nodejs", "firebase", "typescript"],
-    links: [
-      { label: "Repo", url: "https://github.com/CesarBR" },
-    ],
-    image: "/images/project5.jpg",
-  },
-  {
-    title: "Sistema de Automatización de Datos",
-    description: "Scripts avanzados para automatización de procesos, procesamiento de datos masivos y reducción del 90% en tiempo de procesamiento manual.",
-    tech: ["python", "sql", "docker", "aws"],
-    links: [
-      { label: "Repo", url: "https://github.com/CesarBR" },
-    ],
-    image: "/images/project6.jpg",
   },
 ];

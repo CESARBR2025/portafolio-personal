@@ -125,7 +125,7 @@ export default function Hero() {
               Ponerse en contacto
             </button>
             <a
-              href="/pdf/cv.pdf"
+              href="/api/cv?lang=es"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-md font-bold uppercase text-[13px] tracking-wide border border-white/20 text-white hover:bg-white/5 hover:border-indigo-400 hover:-translate-y-1 transition-all duration-300"

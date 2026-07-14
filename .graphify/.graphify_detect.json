@@ -1,50 +1,62 @@
 {
   "files": {
     "code": [
+      ".opencode/plugins/context-loader.js",
       "app/layout.tsx",
       "app/page.tsx",
       "components/About.tsx",
+      "components/BackToTop.tsx",
       "components/Contact.tsx",
       "components/Footer.tsx",
       "components/Hero.tsx",
       "components/Journey.tsx",
       "components/Nav.tsx",
       "components/Projects.tsx",
-      "components/ui/ProjectCard.tsx",
-      "components/ui/SectionHeading.tsx",
-      "components/ui/TechMarquee.tsx",
-      "components/ui/TimelineItem.tsx",
-      "components/ui/Typewriter.tsx",
       "eslint.config.mjs",
       "lib/data.ts",
       "lib/icons.tsx",
       "next.config.ts",
-      "postcss.config.mjs"
+      "postcss.config.js",
+      "scripts/export-schema.mjs",
+      "scripts/extract-domain.mjs",
+      "scripts/load-context.mjs",
+      "scripts/populate-vault.mjs",
+      "tailwind.config.js"
     ],
     "document": [
+      ".graphify/GRAPH_REPORT.md",
+      ".graphify/description-instructions/batch-000.md",
+      ".graphify/description-instructions/batch-001.md",
+      ".graphify/label-instructions/communities.md",
+      ".opencode/context-map.yaml",
+      ".opencode/skills/context-loader.yaml",
       "AGENTS.md",
       "CLAUDE.md",
-      "README.md"
+      "README.md",
+      "boveda/Home.md"
     ],
     "paper": [],
     "image": [
       "public/file.svg",
       "public/globe.svg",
+      "public/images/profile-f.png",
+      "public/images/profile-removebg-preview.png",
+      "public/images/profilef-2.png",
       "public/next.svg",
       "public/vercel.svg",
       "public/window.svg"
     ],
     "video": []
   },
-  "total_files": 27,
-  "total_words": 9130,
+  "total_files": 39,
+  "total_words": 26605,
   "needs_graph": false,
-  "warning": "Corpus is ~9,130 words - fits in a single context window. You may not need a graph.",
+  "warning": "Corpus is ~26,605 words - fits in a single context window. You may not need a graph.",
   "skipped_sensitive": [],
   "graphifyignore_patterns": 27,
   "git": {
     "source_owner": "git",
-    "source_hash": "1342ed7c7f6933afe5f1ef97066ad5f7ddca289e",
+    "source_hash": "b2c72377f19cfff4854fd2a7297462321e7cff76",
     "branches": [
       "main"
     ],
@@ -57,13 +69,13 @@
     "source": "default-auto",
     "root": ".",
     "git_root": ".",
-    "head": "1342ed7c7f6933afe5f1ef97066ad5f7ddca289e",
-    "candidate_count": 33,
-    "included_count": 27,
-    "excluded_untracked_count": 26,
-    "excluded_ignored_count": 42511,
+    "head": "b2c72377f19cfff4854fd2a7297462321e7cff76",
+    "candidate_count": 70,
+    "included_count": 39,
+    "excluded_untracked_count": 8,
+    "excluded_ignored_count": 44136,
     "excluded_sensitive_count": 0,
-    "missing_committed_count": 0,
+    "missing_committed_count": 16,
     "warnings": [],
     "recommendation": "Use --scope all or graphify.yaml inputs.corpus for a knowledge-base folder."
   }

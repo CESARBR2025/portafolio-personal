@@ -73,11 +73,11 @@ export default function Nav() {
             </button>
             {cvOpen && (
               <div className="absolute top-full right-0 mt-2 w-48 py-2 rounded-xl backdrop-blur-xl border shadow-2xl bg-[#111827]/95 border-white/10">
-                <a href="/pdf/cv-es.pdf" target="_blank" rel="noopener"
+                <a href="/api/cv?lang=es" target="_blank" rel="noopener"
                    className="block px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
                   Español (CV)
                 </a>
-                <a href="/pdf/cv-en.pdf" target="_blank" rel="noopener"
+                <a href="/api/cv?lang=en" target="_blank" rel="noopener"
                    className="block px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
                   English (Resume)
                 </a>
@@ -118,7 +118,7 @@ export default function Nav() {
               </button>
             ))}
             <hr className="border-white/5 my-2" />
-            <a href="/pdf/cv-es.pdf" target="_blank" rel="noopener"
+            <a href="/api/cv?lang=es" target="_blank" rel="noopener"
                className="text-sm font-bold uppercase tracking-wider px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 flex items-center gap-2">
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />

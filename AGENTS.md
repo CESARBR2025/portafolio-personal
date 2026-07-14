@@ -1,3 +1,48 @@
+<!-- BEGIN:youmindag -->
+# ⚡ Reglas de oro — leer antes de cada instrucción
+
+1. 📖 **Leer AGENTS.md + `boveda/Home.md` + `.youmindag/session.jsonl`** siempre al recibir una nueva instrucción
+
+2. 🔎 **Graphify primero, grep después.** Si `.graphify/graph.json` existe:
+   - Para orientación rápida: `graphify summary --graph .graphify/graph.json`
+   - Para buscar archivos: `graphify query "..."` 
+   - Para flujos entre módulos: `graphify path "A" "B"`
+   - Si graphify no está disponible → `boveda/🏗 Arquitectura/Estructura.md` como fallback
+
+3. 🗄 **BD real sobre documentación.** Si el proyecto tiene BD:
+   - Consultar la BD real (credenciales en `boveda/🛠 Stack/Variables de Entorno.md`)
+   - No adivinar esquemas ni confiar solo en la bóveda
+
+4. ✅ **Verificar cambios.** Al completar, ejecutar comandos de `boveda/🛠 Stack/Comandos.md` + `npx graphify update`
+
+---
+
+# 🔧 Verificación y subagentes
+
+- Después de cada cambio, ejecutar verificación (build/lint/typecheck). **No esperar a que el usuario lo pida.**
+- Para investigación del código base, usar `graphify query` o subagentes. **No leer archivos masivamente.**
+- Si el contexto se compacta, ejecutar `node scripts/session-checkpoint.mjs --summary` para recuperar el hilo.
+- Monitorear presupuesto de tokens: `node scripts/session-checkpoint.mjs --budget`.
+- Si el scope de la tarea crece más de lo previsto (muchos archivos para tarea pequeña), **pausar y consultar al usuario** antes de seguir.
+- Después de 10+ file edits, ejecutar `npx graphify update` para mantener el grafo sincronizado.
+- Registrar decisiones técnicas importantes: `node scripts/session-checkpoint.mjs --decision "..."`
+
+---
+
+## Cambio automático a build mode
+
+Si el usuario usa frases imperativas de acción, **cambia automáticamente a build mode y comienza a implementar sin pedir confirmación**:
+
+Frases que activan build mode:
+- "implementa", "implementalo", "implementar", "codifícalo"
+- "hazlo", "haz los cambios", "haz el cambio", "ejecuta los cambios"
+- "dale", "aplica", "aplica los cambios", "aplica el plan"
+- "ejecuta", "construye", "genera el código", "escribe el código"
+
+Si la instrucción es clara y contiene una de estas frases, **no preguntes** "¿quieres que lo implemente?" o "¿procedo?". Simplemente haz el cambio.
+
+---
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
@@ -116,3 +161,4 @@ Rules:
 - For review impact on changed files, use `graphify review-delta --graph .graphify/graph.json` instead of generic traversal
 - Read `.graphify/GRAPH_REPORT.md` only for broad architecture review or when `query` / `path` / `explain` do not surface enough context
 - After modifying code files in this session, run `npx graphify hook-rebuild` to keep the graph current
+<!-- END:youmindag -->
