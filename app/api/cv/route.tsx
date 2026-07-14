@@ -3,6 +3,7 @@ import React from "react";
 import { Document, Page, View, Text, Image, Svg, Path, Rect, Circle, StyleSheet } from "@react-pdf/renderer";
 import { siteConfig, timelineData, projects } from "@/lib/data";
 import { translations, additionalSkills, techList, languages } from "@/lib/cv-data";
+import { translations as siteTranslations } from "@/lib/i18n";
 import path from "path";
 import fs from "fs";
 
@@ -336,20 +337,22 @@ function CVHeader() {
   );
 }
 
-function ProfileSection() {
+function ProfileSection({ lang }: { lang: string }) {
+  const t = siteTranslations[lang];
   return (
     <View style={s.section}>
       <View style={s.sectionTitle}>
         <UserIcon />
         <Text>Perfil Profesional</Text>
       </View>
-      <Text style={s.aboutText}>{siteConfig.description}</Text>
+      <Text style={s.aboutText}>{t.hero.description}</Text>
     </View>
   );
 }
 
-function ExperienceSection() {
+function ExperienceSection({ lang }: { lang: string }) {
   const jobs = timelineData.filter((e) => e.type === "Trabajo");
+  const enTimeline = siteTranslations.en?.journey?.timeline;
 
   return (
     <View style={s.section}>
@@ -358,8 +361,13 @@ function ExperienceSection() {
         <Text>Experiencia Profesional</Text>
       </View>
       {jobs.map((job, idx) => {
-        const { company, city } = parseLocation(job.subtitle);
-        const bullets = bulletPoints(job.description);
+        const en = lang === "en" && enTimeline ? enTimeline[idx] : null;
+        const subtitle = en?.subtitle || job.subtitle;
+        const description = en?.description || job.description;
+        const title = en?.title || job.title;
+        const year = en?.year || job.year;
+        const { company, city } = parseLocation(subtitle);
+        const bullets = bulletPoints(description);
         return (
           <View key={job.title + job.year} style={s.expRow}>
             <View style={s.timelineCol}>
@@ -369,10 +377,10 @@ function ExperienceSection() {
               <View style={s.expTop}>
                 <View>
                   <Text style={s.expCompany}>{company}</Text>
-                  <Text style={s.expRole}>{job.title}</Text>
+                  <Text style={s.expRole}>{title}</Text>
                 </View>
                 <View>
-                  <Text style={s.expDate}>{job.year}</Text>
+                  <Text style={s.expDate}>{year}</Text>
                   <Text style={s.expLocation}>{city}</Text>
                 </View>
               </View>
@@ -389,14 +397,18 @@ function ExperienceSection() {
   );
 }
 
-function FeaturedProjectSection() {
+function FeaturedProjectSection({ lang }: { lang: string }) {
   const project = projects.find((p) => p.featured);
   if (!project) return null;
 
-  const bullets = project.description
+  const tProj = siteTranslations[lang]?.projects;
+  const desc = lang === "en" && tProj?.featuredDesc ? tProj.featuredDesc : project.description;
+  const ptitle = lang === "en" && tProj?.featuredTitle ? tProj.featuredTitle : project.title;
+
+  const bullets = desc
     .split("\n")
-    .map((s) => s.trim())
-    .filter((s) => s.startsWith("•"));
+    .map((s: string) => s.trim())
+    .filter((s: string) => s.startsWith("•"));
 
   return (
     <View style={s.section}>
@@ -405,9 +417,9 @@ function FeaturedProjectSection() {
         <Text>Proyecto Destacado</Text>
       </View>
       <View style={s.projectCard}>
-        <Text style={s.projectTitle}>{project.title}</Text>
+        <Text style={s.projectTitle}>{ptitle}</Text>
         <Text style={s.projectMeta}>100% Open Source · MIT</Text>
-        {bullets.map((b, i) => (
+        {bullets.map((b: string, i: number) => (
           <Text key={i} style={s.projectBullet}>
             ▸ {b.replace("• ", "")}
           </Text>
@@ -417,8 +429,11 @@ function FeaturedProjectSection() {
   );
 }
 
-function EducationSection() {
+function EducationSection({ lang }: { lang: string }) {
   const edu = timelineData.filter((e) => e.type === "Educación");
+  const enTimeline = siteTranslations.en?.journey?.timeline;
+  const eduIdx = timelineData.findIndex((e) => e.type === "Educación");
+  const en = lang === "en" && enTimeline && eduIdx >= 0 ? enTimeline[eduIdx] : null;
 
   return (
     <View style={s.section}>
@@ -427,7 +442,10 @@ function EducationSection() {
         <Text>Educación</Text>
       </View>
       {edu.map((e) => {
-        const { company: school, city } = parseLocation(e.subtitle);
+        const subtitle = en?.subtitle || e.subtitle;
+        const title = en?.title || e.title;
+        const year = en?.year || e.year;
+        const { company: school, city } = parseLocation(subtitle);
         return (
           <View key={e.title + e.year} style={s.expRow}>
             <View style={s.timelineCol}>
@@ -437,10 +455,10 @@ function EducationSection() {
               <View style={s.expTop}>
                 <View>
                   <Text style={s.eduSchool}>{school}</Text>
-                  <Text style={s.eduTitle}>{e.title}</Text>
+                  <Text style={s.eduTitle}>{title}</Text>
                 </View>
                 <View>
-                  <Text style={s.eduDate}>{e.year}</Text>
+                  <Text style={s.eduDate}>{year}</Text>
                   <Text style={s.eduLoc}>{city}</Text>
                 </View>
               </View>
@@ -452,8 +470,8 @@ function EducationSection() {
   );
 }
 
-function SkillsSection() {
-  const skills = additionalSkills.es;
+function SkillsSection({ lang }: { lang: string }) {
+  const skills = lang === "en" ? additionalSkills.en : additionalSkills.es;
 
   return (
     <View style={s.section}>
@@ -470,7 +488,7 @@ function SkillsSection() {
   );
 }
 
-function TechnologiesSection() {
+function TechnologiesSection({ lang }: { lang: string }) {
   return (
     <View style={s.section}>
       <View style={s.sectionTitle}>
@@ -485,7 +503,7 @@ function TechnologiesSection() {
       <View style={s.langRow}>
         {languages.map((l) => (
           <Text key={l.name} style={s.langBadge}>
-            {l.name} ({l.level})
+            {l.name} ({lang === "en" ? l.levelEn : l.level})
           </Text>
         ))}
       </View>
@@ -501,12 +519,12 @@ function CvDocument({ lang }: { lang: string }) {
       <Page size="A4" style={s.page}>
         <CVHeader />
         <View style={s.body}>
-          <ProfileSection />
-          <ExperienceSection />
-          <FeaturedProjectSection />
-          <EducationSection />
-          <SkillsSection />
-          <TechnologiesSection />
+          <ProfileSection lang={lang} />
+          <ExperienceSection lang={lang} />
+          <FeaturedProjectSection lang={lang} />
+          <EducationSection lang={lang} />
+          <SkillsSection lang={lang} />
+          <TechnologiesSection lang={lang} />
         </View>
         <View style={s.footer}>
           <Text style={s.footerText}>
