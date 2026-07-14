@@ -3,19 +3,23 @@
 import { useActionState } from "react";
 import { siteConfig } from "@/lib/data";
 import { sendContact } from "@/app/actions/contact";
+import { useLocale } from "@/components/LocaleProvider";
+import { translations } from "@/lib/i18n";
 
 export default function Contact() {
+  const locale = useLocale();
+  const tContact = translations[locale].contact;
   const [state, formAction, pending] = useActionState(sendContact, undefined);
 
   return (
     <section id="contact" className="py-24 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-indigo-400 font-bold tracking-widest text-xs uppercase mb-3">Contacto</p>
+        <p className="text-indigo-400 font-bold tracking-widest text-xs uppercase mb-3">{tContact.label}</p>
         <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-          Trabajemos <span className="text-indigo-500">Juntos.</span>
+          {tContact.title} <span className="text-indigo-500">{tContact.titleAccent}</span>
         </h2>
         <p className="text-slate-400 text-lg mb-16 max-w-xl">
-          Actualmente estoy abierto a nuevas oportunidades de trabajo y proyectos freelance. Ya sea que tengas una pregunta o simplemente quieras saludar, haré todo lo posible para responderte pronto.
+          {tContact.description}
         </p>
 
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-start">
@@ -30,7 +34,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold text-white">Contáctame</div>
+                  <div className="text-sm font-bold text-white">{tContact.contactMe}</div>
                   <div className="text-xs text-slate-400">{siteConfig.email}</div>
                 </div>
               </a>
@@ -43,7 +47,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold text-white">Ver Código</div>
+                  <div className="text-sm font-bold text-white">{tContact.viewCode}</div>
                   <div className="text-xs text-slate-400">GitHub</div>
                 </div>
               </a>
@@ -56,7 +60,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold text-white">Conectar</div>
+                  <div className="text-sm font-bold text-white">{tContact.connect}</div>
                   <div className="text-xs text-slate-400">LinkedIn</div>
                 </div>
               </a>
@@ -87,16 +91,16 @@ export default function Contact() {
                 <form action={formAction} className="space-y-6 md:space-y-8">
                   <div className="grid md:grid-cols-2 gap-6">
                     <input
-                      name="name" type="text" required placeholder="Ej. César Bárcenas"
+                      name="name" type="text" required placeholder={tContact.namePlaceholder}
                       className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 transition-all"
                     />
                     <input
-                      name="email" type="email" required placeholder="email@ejemplo.com"
+                      name="email" type="email" required placeholder={tContact.emailPlaceholder}
                       className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 transition-all"
                     />
                   </div>
                   <textarea
-                    name="message" required rows={4} placeholder="Cuéntame sobre tu proyecto, ideas o pregunta..."
+                    name="message" required rows={4} placeholder={tContact.messagePlaceholder}
                     className="w-full px-4 py-3 rounded-xl outline-none bg-slate-900/50 border border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500 resize-none transition-all"
                   />
 
@@ -112,11 +116,11 @@ export default function Contact() {
                              className="animate-spin">
                           <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                         </svg>
-                        <span>Enviando...</span>
+                        <span>{tContact.sending}</span>
                       </>
                     ) : (
                       <>
-                        <span>Enviar Mensaje</span>
+                        <span>{tContact.sendMessage}</span>
                         <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
                              className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
                           <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
@@ -130,7 +134,7 @@ export default function Contact() {
               {state?.success && (
                 <div className="space-y-5 min-h-[300px] flex flex-col justify-end pb-4">
                   <div className="max-w-[85%] self-end rounded-2xl rounded-tr-sm p-5 shadow-lg animate-fade-in-up bg-indigo-600 text-white">
-                    <p className="text-sm leading-relaxed">Hola, me gustaría conectar contigo.</p>
+                    <p className="text-sm leading-relaxed">{tContact.successMsg}</p>
                   </div>
                   <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm p-4 shadow-sm animate-fade-in-up animation-delay-400 bg-[#1E293B] text-slate-300 border border-white/5 flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center shrink-0 text-white text-xs font-bold">
@@ -138,8 +142,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-white mb-1">{siteConfig.name}</div>
-                      <p className="text-xs text-slate-400 leading-relaxed">Gracias por contactarme. Te responderé pronto.</p>
-                      <span className="text-[10px] text-slate-600 mt-2 block">Enviado ✓</span>
+                      <p className="text-xs text-slate-400 leading-relaxed">{tContact.successReply}</p>
+                      <span className="text-[10px] text-slate-600 mt-2 block">{tContact.sent} ✓</span>
                     </div>
                   </div>
                 </div>

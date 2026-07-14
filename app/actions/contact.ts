@@ -1,16 +1,21 @@
 "use server";
 
 import { Resend } from "resend";
+import { cookies } from "next/headers";
+import { translations, defaultLocale } from "@/lib/i18n";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContact(_prevState: unknown, formData: FormData) {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("locale")?.value || defaultLocale;
+  const tContact = translations[locale].contact;
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
 
   if (!name || !email || !message) {
-    return { error: "Todos los campos son obligatorios." };
+    return { error: tContact.allFieldsRequired };
   }
 
   try {
@@ -74,6 +79,6 @@ export async function sendContact(_prevState: unknown, formData: FormData) {
 
     return { success: true };
   } catch {
-    return { error: "Error al enviar el mensaje. Intenta de nuevo." };
+    return { error: tContact.errorSending };
   }
 }

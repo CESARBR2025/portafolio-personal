@@ -1,7 +1,12 @@
+import { cookies } from "next/headers";
 import { siteConfig, techCategories } from "@/lib/data";
 import { IconImage } from "@/lib/icons";
+import { translations, defaultLocale } from "@/lib/i18n";
 
-export default function About() {
+export default async function About() {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("locale")?.value || defaultLocale;
+  const tAbout = translations[locale].about;
   const allIcons = techCategories.flatMap((cat) => cat.items.map((item) => item.icon));
 
   const duplicated = [...allIcons, ...allIcons, ...allIcons, ...allIcons];
@@ -10,16 +15,16 @@ export default function About() {
     <section id="about" className="py-24 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12">
-          Sobre Mí<span className="text-indigo-500">.</span>
+          {tAbout.title}<span className="text-indigo-500">.</span>
         </h2>
 
         <div className="grid md:grid-cols-5 gap-12 mb-16">
           <div className="md:col-span-3">
             <p className="text-base md:text-lg leading-relaxed text-slate-400 mb-4">
-              Soy {siteConfig.firstName}, {siteConfig.title.toLowerCase()}. Me especializo en transformar ideas complejas en experiencias digitales intuitivas, rápidas y escalables.
+              {tAbout.line1.replace("{name}", siteConfig.firstName).replace("{title}", (locale === "en" && tAbout.siteTitle ? tAbout.siteTitle : siteConfig.title).toLowerCase())}
             </p>
             <p className="text-base md:text-lg leading-relaxed text-slate-400">
-              Mi enfoque técnico se complementa con una metodología arquitectónica de análisis complejo, asegurando que cada aplicación sea como te la imaginaste.
+              {tAbout.line2}
             </p>
           </div>
           <div className="md:col-span-2">
@@ -27,7 +32,7 @@ export default function About() {
               {siteConfig.stats.map((stat) => (
                 <div key={stat.label} className="text-center p-4 rounded-xl border border-white/5 bg-white/[0.02]">
                   <div className="text-2xl md:text-3xl font-extrabold text-white mb-1">{stat.value}</div>
-                  <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-slate-500">{stat.label}</div>
+                  <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-slate-500">{locale === "es" ? stat.label : stat.label === "años de experiencia" ? "years of experience" : stat.label === "proyectos" ? "projects" : "technologies"}</div>
                 </div>
               ))}
             </div>
@@ -35,7 +40,7 @@ export default function About() {
         </div>
 
         <h3 className="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-bold">
-          Mi Stack Actual
+          {tAbout.currentStack}
         </h3>
         <div className="flex flex-wrap gap-2 mb-10">
           {[
@@ -56,7 +61,7 @@ export default function About() {
         </div>
 
         <h3 className="text-lg font-bold text-white mb-8">
-          Mi Arsenal Tecnológico
+          {tAbout.techArsenal}
         </h3>
 
         {techCategories.map((cat) => (

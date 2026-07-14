@@ -3,14 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/lib/data";
-
-const ROLES = [
-  "Desarrollador Fullstack.",
-  "Ingeniero en Sistemas.",
-  "Solucionador de Problemas.",
-];
+import { useLocale } from "@/components/LocaleProvider";
+import { translations } from "@/lib/i18n";
 
 export default function Hero() {
+  const locale = useLocale();
+  const tHero = translations[locale].hero;
   const [showBoot, setShowBoot] = useState(true);
   const [bootPercent, setBootPercent] = useState(0);
   const [typeText, setTypeText] = useState("");
@@ -34,11 +32,17 @@ export default function Hero() {
   }, [showBoot]);
 
   useEffect(() => {
+    wordIndexRef.current = 0;
+    deletingRef.current = false;
+    setTypeText("");
+  }, [locale]);
+
+  useEffect(() => {
     if (showBoot) return;
 
     let timeout: NodeJS.Timeout;
     const tick = () => {
-      const word = ROLES[wordIndexRef.current];
+      const word = tHero.roles[wordIndexRef.current];
       const del = deletingRef.current;
 
       if (!del && typeText.length === word.length) {
@@ -51,7 +55,7 @@ export default function Hero() {
 
       if (del && typeText.length === 0) {
         deletingRef.current = false;
-        wordIndexRef.current = (wordIndexRef.current + 1) % ROLES.length;
+        wordIndexRef.current = (wordIndexRef.current + 1) % tHero.roles.length;
         timeout = setTimeout(tick, 70);
         return;
       }
@@ -63,7 +67,7 @@ export default function Hero() {
 
     timeout = setTimeout(tick, 70);
     return () => clearTimeout(timeout);
-  }, [typeText, showBoot]);
+  }, [typeText, showBoot, locale]);
 
   if (showBoot) {
     return (
@@ -75,7 +79,7 @@ export default function Hero() {
             <span className="animate-blink text-indigo-500">_</span>
           </div>
           <div className="flex items-center gap-2 text-xs font-mono text-slate-500 mb-2">
-            <span>Initializing system...</span>
+            <span>{tHero.bootText}</span>
             <span className="tabular-nums">{Math.min(bootPercent, 100)}%</span>
           </div>
           <div className="w-56 h-1 bg-white/5 rounded-full overflow-hidden">
@@ -95,26 +99,26 @@ export default function Hero() {
         
         <div className="max-w-2xl flex-1 animate-fade-in-up">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-2 text-white hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300">
-            Hola, soy {siteConfig.firstName}
+            {tHero.greeting} {siteConfig.firstName}
           </h1>
 
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-indigo-400 mb-6 min-h-[50px] md:min-h-[60px]">
-            <span>Soy </span>
+            <span>{tHero.rolePrefix}</span>
             <span className="text-indigo-500">{typeText}</span>
             <span className="inline-block w-[3px] h-[30px] md:h-[45px] bg-indigo-500 ml-1 animate-blink align-text-bottom shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
           </h2>
 
           <div className="flex flex-wrap gap-3 mb-6">
             <span className="px-4 py-1.5 rounded-full border text-sm font-medium border-indigo-500/30 bg-indigo-500/10 text-indigo-200">
-              {siteConfig.stats[0].value} {siteConfig.stats[0].label}
+              {siteConfig.stats[0].value} {locale === "es" ? siteConfig.stats[0].label : "years of experience"}
             </span>
             <span className="px-4 py-1.5 rounded-full border text-sm font-medium border-white/10 bg-white/5 text-slate-400">
-              Disponible para proyectos
+              {tHero.availableProjects}
             </span>
           </div>
 
           <p className="text-base md:text-lg leading-relaxed mb-10 text-slate-400 max-w-xl">
-            {siteConfig.description}
+            {tHero.description}
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -122,15 +126,15 @@ export default function Hero() {
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-3 rounded-md font-bold uppercase text-[13px] tracking-wide bg-indigo-500 text-white hover:bg-indigo-600 shadow-[0_0_20px_rgba(99,102,241,0.2)] hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:-translate-y-1 transition-all duration-300"
             >
-              Ponerse en contacto
+              {tHero.contactCta}
             </button>
             <a
-              href="/api/cv?lang=es"
+              href={`/api/cv?lang=${locale}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-md font-bold uppercase text-[13px] tracking-wide border border-white/20 text-white hover:bg-white/5 hover:border-indigo-400 hover:-translate-y-1 transition-all duration-300"
             >
-              Descargar CV
+              {tHero.downloadCv}
             </a>
           </div>
         </div>
@@ -172,7 +176,7 @@ export default function Hero() {
 
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full border text-xs font-medium backdrop-blur-md bg-[#111827]/80 border-indigo-500/30 text-indigo-300 whitespace-nowrap">
             <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block mr-1.5 animate-pulse" />
-            Disponible para contratación
+            {tHero.availableHire}
           </div>
         </div>
       </div>

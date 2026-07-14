@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { siteConfig } from "@/lib/data";
+import { defaultLocale, type Locale } from "@/lib/i18n";
+import { LocaleProvider } from "@/components/LocaleProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,17 +25,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const locale = (cookieStore.get("locale")?.value as Locale) || defaultLocale;
+
   return (
-    <html lang="es" className={`${montserrat.variable} h-full`}>
+    <html lang={locale} className={`${montserrat.variable} h-full`}>
       <body className="min-h-full bg-[#0A0F1C] text-slate-300 antialiased font-sans">
-        <div className="relative min-h-screen">
-          {children}
-        </div>
+        <LocaleProvider locale={locale}>
+          <div className="relative min-h-screen">{children}</div>
+        </LocaleProvider>
       </body>
     </html>
   );

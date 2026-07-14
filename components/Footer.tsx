@@ -1,8 +1,12 @@
 "use client";
 
 import { siteConfig, navLinks } from "@/lib/data";
+import { useLocale } from "@/components/LocaleProvider";
+import { translations } from "@/lib/i18n";
 
 export default function Footer() {
+  const locale = useLocale();
+  const tFooter = translations[locale].footer;
   const year = new Date().getFullYear();
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -16,12 +20,12 @@ export default function Footer() {
               <span className="text-indigo-500">.</span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
-              Desarrollador de Software especializado en crear soluciones digitales escalables, limpias y eficientes desde México hacia el mundo.
+              {tFooter.description}
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Navegación</h4>
+            <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">{tFooter.navigation}</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -29,7 +33,7 @@ export default function Footer() {
                     onClick={() => scrollTo(link.href)}
                     className="text-sm text-slate-500 hover:text-white transition-colors"
                   >
-                    {link.label}
+                    {translations[locale].nav[link.href]}
                   </button>
                 </li>
               ))}
@@ -37,10 +41,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Status Actual</h4>
+            <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">{tFooter.currentStatus}</h4>
             <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              {siteConfig.available ? "Disponible para contratación" : "No disponible"}
+              {siteConfig.available ? tFooter.available : tFooter.notAvailable}
             </div>
             <div className="flex gap-2">
               <a href={siteConfig.github} target="_blank" rel="noopener noreferrer"
@@ -60,8 +64,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-          <p>© {year} {siteConfig.name}. Todos los derechos reservados.</p>
-          <p>Hecho con Next.js y mucha lógica.</p>
+          <p>© {year} {siteConfig.name}. {tFooter.copyright}</p>
+          <p>{tFooter.builtWith}</p>
         </div>
       </div>
     </footer>

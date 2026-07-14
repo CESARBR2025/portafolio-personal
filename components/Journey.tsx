@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { cookies } from "next/headers";
 import { IconImage } from "@/lib/icons";
 import { timelineData, type TimelineEntry } from "@/lib/data";
+import { translations, defaultLocale } from "@/lib/i18n";
 
 const flagMap: Record<string, string> = {
   mx: "https://flagcdn.com/w20/mx.png",
@@ -21,21 +23,25 @@ const typeConfig: Record<string, { bg: string; text: string; border: string; ico
   "Certificación":     { bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/20", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
 };
 
-export default function Journey() {
+export default async function Journey() {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("locale")?.value || defaultLocale;
+  const tJourney = translations[locale].journey;
+  const enTimeline = locale === "en" ? tJourney.timeline : null;
   return (
     <section id="education" className="py-24 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-          Trayectoria<span className="text-indigo-500">.</span>
+          {tJourney.title}<span className="text-indigo-500">.</span>
         </h2>
         <p className="text-slate-400 text-lg mb-16 max-w-2xl">
-          Mi camino profesional, logros académicos y experiencia colaborativa.
+          {tJourney.subtitle}
         </p>
 
         <div className="max-w-5xl mx-auto md:mx-0">
           <div className="relative border-l-2 ml-4 md:ml-6 space-y-16 md:space-y-20 border-indigo-500/30">
             {timelineData.map((item, index) => (
-              <TimelineItemComponent key={index} item={item} />
+              <TimelineItemComponent key={index} item={item} tJourney={tJourney} enTimeline={enTimeline} index={index} />
             ))}
           </div>
         </div>
@@ -44,7 +50,8 @@ export default function Journey() {
   );
 }
 
-function TimelineItemComponent({ item }: { item: TimelineEntry }) {
+function TimelineItemComponent({ item, tJourney, enTimeline, index }: { item: TimelineEntry; tJourney: any; enTimeline: any[] | null; index: number }) {
+  const en = enTimeline?.[index];
   const cfg = typeConfig[item.type] || typeConfig["Trabajo"];
 
   return (
@@ -60,16 +67,16 @@ function TimelineItemComponent({ item }: { item: TimelineEntry }) {
           <div className="flex-1 w-full p-5 md:p-7 rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 bg-[#111827]/60 border-white/5 hover:border-indigo-500/30 hover:bg-[#111827]/90 hover:shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               <span className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${cfg.bg} ${cfg.text} ${cfg.border}`}>
-                {item.type}
+                {tJourney.typeLabels[item.type] || item.type}
               </span>
-              <span className="text-xs text-slate-500 font-medium">{item.year}</span>
+              <span className="text-xs text-slate-500 font-medium">{en?.year || item.year}</span>
               {item.flags?.map((f) => (
                 <Image key={f} src={flagMap[f]} alt={f} width={20} height={15} className="h-4 w-auto rounded-sm" unoptimized />
               ))}
             </div>
-            <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-            <p className="text-sm text-slate-400 mb-3">{item.subtitle}</p>
-            <p className="text-sm text-slate-500 leading-relaxed mb-4">{item.description}</p>
+            <h3 className="text-lg font-bold text-white mb-1">{en?.title || item.title}</h3>
+            <p className="text-sm text-slate-400 mb-3">{en?.subtitle || item.subtitle}</p>
+            <p className="text-sm text-slate-500 leading-relaxed mb-4">{en?.description || item.description}</p>
             <div className="flex flex-wrap gap-1.5">
               {item.tech.map((t) => (
                   <span key={t} className="flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full border bg-white/5 text-slate-300 border-white/10">

@@ -29,7 +29,7 @@ const C = {
 
 function BriefcaseIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Rect x="2" y="7" width="20" height="14" rx="2" fill={C.indigo} />
       <Path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" fill={C.indigo} />
     </Svg>
@@ -38,7 +38,7 @@ function BriefcaseIcon() {
 
 function GraduationIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Path d="M22 10l-10-5L2 10l10 5 10-5z" fill={C.indigo} />
       <Path d="M6 12v5c3 3 9 3 12 0v-5" fill={C.indigo} />
     </Svg>
@@ -47,7 +47,7 @@ function GraduationIcon() {
 
 function StarIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={C.indigo} />
     </Svg>
   );
@@ -55,7 +55,7 @@ function StarIcon() {
 
 function SparkleIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z" fill={C.indigo} />
     </Svg>
   );
@@ -63,7 +63,7 @@ function SparkleIcon() {
 
 function WrenchIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" fill={C.indigo} />
     </Svg>
   );
@@ -71,7 +71,7 @@ function WrenchIcon() {
 
 function UserIcon() {
   return (
-    <Svg width={9} height={9} viewBox="0 0 24 24" fill="none">
+    <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
       <Path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" fill={C.indigo} />
       <Circle cx="12" cy="7" r="4" fill={C.indigo} />
     </Svg>
@@ -86,146 +86,146 @@ const s = StyleSheet.create({
     flexDirection: "column",
   },
   header: {
-    padding: "12px 32px 8px",
-    borderBottom: `2.5px solid ${C.indigo}`,
+    padding: "18px 36px 14px",
+    borderBottom: `3px solid ${C.indigo}`,
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    gap: 14,
   },
   avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    border: `2px solid ${C.indigo}`,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    border: `2.5px solid ${C.indigo}`,
   },
   headerContent: {
     flex: 1,
   },
   name: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: "bold",
     color: C.dark,
-    marginBottom: 1,
+    marginBottom: 2,
   },
   contactLine: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 2,
+    gap: 4,
   },
   contactText: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray500,
   },
   contactSep: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray300,
   },
   body: {
-    padding: "6px 28px 0",
+    padding: "14px 36px 0",
     flex: 1,
   },
   section: {
-    marginBottom: 7,
+    marginBottom: 16,
   },
   sectionTitle: {
-    fontSize: 8,
+    fontSize: 12,
     fontWeight: "bold",
     color: C.indigo,
     textTransform: "uppercase" as const,
-    letterSpacing: 1,
-    borderBottom: `1px solid ${C.gray200}`,
-    paddingBottom: 2,
-    marginBottom: 4,
+    letterSpacing: 1.5,
+    borderBottom: `1.5px solid ${C.gray200}`,
+    paddingBottom: 3,
+    marginBottom: 6,
     flexDirection: "row",
     alignItems: "center",
-    gap: 3,
+    gap: 5,
   },
   aboutText: {
-    fontSize: 7,
+    fontSize: 10,
     color: C.dark2,
-    lineHeight: 1.4,
+    lineHeight: 1.55,
     textAlign: "justify" as const,
   },
   expRow: {
     flexDirection: "row",
-    marginBottom: 5,
+    marginBottom: 10,
   },
   timelineCol: {
-    width: 12,
+    width: 18,
     alignItems: "center",
   },
   timelineDot: {
-    width: 5,
-    height: 5,
-    borderRadius: 2.5,
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
     backgroundColor: C.indigo,
-    marginTop: 3,
+    marginTop: 4,
   },
   expContent: {
     flex: 1,
-    paddingLeft: 3,
+    paddingLeft: 4,
   },
   expTop: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "baseline",
-    marginBottom: 1,
+    marginBottom: 2,
   },
   expCompany: {
-    fontSize: 8,
+    fontSize: 11,
     fontWeight: "bold",
     color: C.indigo,
   },
   expRole: {
-    fontSize: 7.5,
+    fontSize: 10,
     color: C.dark,
     fontStyle: "italic",
   },
   expDate: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray500,
     textAlign: "right",
   },
   expLocation: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray400,
     textAlign: "right",
   },
   bulletRow: {
     flexDirection: "row",
-    marginBottom: 0.5,
+    marginBottom: 1,
   },
   bulletText: {
-    fontSize: 7,
+    fontSize: 9.5,
     color: C.dark2,
-    lineHeight: 1.35,
+    lineHeight: 1.45,
     flex: 1,
   },
   projectCard: {
     backgroundColor: C.gray50,
-    borderLeft: `3px solid ${C.indigo}`,
+    borderLeft: `4px solid ${C.indigo}`,
     borderTop: `1px solid ${C.gray200}`,
     borderRight: `1px solid ${C.gray200}`,
     borderBottom: `1px solid ${C.gray200}`,
-    borderRadius: 3,
-    padding: 5,
+    borderRadius: 4,
+    padding: 8,
   },
   projectTitle: {
-    fontSize: 8,
+    fontSize: 11,
     fontWeight: "bold",
     color: C.indigo,
-    marginBottom: 1,
-  },
-  projectMeta: {
-    fontSize: 6,
-    color: C.gray500,
     marginBottom: 2,
   },
+  projectMeta: {
+    fontSize: 8,
+    color: C.gray500,
+    marginBottom: 4,
+  },
   projectBullet: {
-    fontSize: 7,
+    fontSize: 9.5,
     color: C.dark2,
-    lineHeight: 1.35,
-    marginBottom: 0.5,
+    lineHeight: 1.4,
+    marginBottom: 1,
     paddingLeft: 1,
   },
   eduTop: {
@@ -234,63 +234,63 @@ const s = StyleSheet.create({
     alignItems: "baseline",
   },
   eduSchool: {
-    fontSize: 8,
+    fontSize: 11,
     fontWeight: "bold",
     color: C.indigo,
   },
   eduTitle: {
-    fontSize: 7.5,
+    fontSize: 10,
     color: C.dark2,
   },
   eduDate: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray500,
     textAlign: "right",
   },
   eduLoc: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.gray400,
     textAlign: "right",
   },
   skillItem: {
-    fontSize: 7,
+    fontSize: 9.5,
     color: C.dark2,
-    lineHeight: 1.4,
-    marginBottom: 0.5,
+    lineHeight: 1.5,
+    marginBottom: 1,
     paddingLeft: 1,
   },
   techRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 3,
+    gap: 5,
   },
   techBadge: {
-    fontSize: 6,
+    fontSize: 8.5,
     color: C.indigo,
     backgroundColor: C.indigoLight,
-    padding: "1px 5px",
-    borderRadius: 2,
+    padding: "2px 8px",
+    borderRadius: 3,
   },
   langRow: {
     flexDirection: "row",
-    gap: 8,
-    marginTop: 3,
+    gap: 12,
+    marginTop: 5,
   },
   langBadge: {
-    fontSize: 6.5,
+    fontSize: 9,
     color: C.dark2,
     backgroundColor: C.gray100,
-    padding: "1px 6px",
-    borderRadius: 2,
+    padding: "2px 8px",
+    borderRadius: 3,
   },
   footer: {
-    borderTop: `1px solid ${C.indigo}`,
-    padding: "4px 28px",
+    borderTop: `1.5px solid ${C.indigo}`,
+    padding: "8px 36px",
     flexDirection: "row",
     justifyContent: "center",
   },
   footerText: {
-    fontSize: 6,
+    fontSize: 8,
     color: C.gray400,
   },
 });
@@ -376,7 +376,7 @@ function ExperienceSection() {
                   <Text style={s.expLocation}>{city}</Text>
                 </View>
               </View>
-              {bullets.slice(0, 2).map((b, i) => (
+              {bullets.slice(0, 3).map((b, i) => (
                 <View key={i} style={s.bulletRow}>
                   <Text style={s.bulletText}>▸ {b}.</Text>
                 </View>
