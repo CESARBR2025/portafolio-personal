@@ -4,7 +4,7 @@ export const siteConfig = {
   firstName: "César",
   title: "Ingeniero en Sistemas Computacionales | Desarrollador Fullstack",
   description:
-    "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes y escalables.",
+    "Soy Ingeniero en Sistemas Computacionales con experiencia en el desarrollo de soluciones para los sectores público y privado. Creando sistemas de alto impacto enfocados en la escalabilidad y la eficiencia operativa.",
   location: "México",
   remoteLabel: "Disponible Remoto",
   email: "barcenasrosalescesarivan@gmail.com",

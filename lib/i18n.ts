@@ -24,7 +24,7 @@ export const translations: Record<string, Record<string, any>> = {
       greeting: "Hola, soy",
       rolePrefix: "Soy ",
       description:
-        "Construyo aplicaciones web, sistemas robustos y herramientas digitales eficientes y escalables.",
+        "Soy Ingeniero en Sistemas Computacionales con experiencia en el desarrollo de soluciones para los sectores público y privado. Creando sistemas de alto impacto enfocados en la escalabilidad y la eficiencia operativa.",
       availableProjects: "Disponible para proyectos",
       availableHire: "Disponible para contratación",
       contactCta: "Ponerse en contacto",
@@ -124,7 +124,7 @@ export const translations: Record<string, Record<string, any>> = {
       greeting: "Hi, I'm",
       rolePrefix: "I'm ",
       description:
-        "I build web applications, robust systems, and efficient, scalable digital tools.",
+        "Computer Systems Engineer with experience developing solutions for the public and private sectors. Creating high-impact systems focused on scalability and operational efficiency.",
       availableProjects: "Available for projects",
       availableHire: "Available for hire",
       contactCta: "Get in touch",
