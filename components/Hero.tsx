@@ -129,9 +129,8 @@ export default function Hero() {
               {tHero.contactCta}
             </button>
             <a
-              href={`/api/cv?lang=${locale}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/cv/CV-CESAR_IVAN_BARCENAS_ROSALES.pdf"
+              download="CV-CESAR_IVAN_BARCENAS_ROSALES.pdf"
               className="px-8 py-3 rounded-md font-bold uppercase text-[13px] tracking-wide border border-white/20 text-white hover:bg-white/5 hover:border-indigo-400 hover:-translate-y-1 transition-all duration-300"
             >
               {tHero.downloadCv}

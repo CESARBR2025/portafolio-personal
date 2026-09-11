@@ -12,7 +12,6 @@ export default function Nav() {
   const t = translations[locale];
   const [activeSection, setActiveSection] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cvOpen, setCvOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -34,7 +33,6 @@ export default function Nav() {
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
-    setCvOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -80,29 +78,16 @@ export default function Nav() {
             {otherLocale[locale] === "en" ? "EN" : "ES"}
           </a>
 
-          <div className="relative">
-            <button
-              onClick={() => setCvOpen(!cvOpen)}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider bg-white text-slate-900 hover:bg-indigo-50 transition-colors"
-            >
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
-              </svg>
-              {t.nav.cv}
-            </button>
-            {cvOpen && (
-              <div className="absolute top-full right-0 mt-2 w-48 py-2 rounded-xl backdrop-blur-xl border shadow-2xl bg-[#111827]/95 border-white/10">
-                <a href="/api/cv?lang=es" target="_blank" rel="noopener"
-                   className="block px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
-                  Español (CV)
-                </a>
-                <a href="/api/cv?lang=en" target="_blank" rel="noopener"
-                   className="block px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
-                  English (Resume)
-                </a>
-              </div>
-            )}
-          </div>
+          <a
+            href="/cv/CV-CESAR_IVAN_BARCENAS_ROSALES.pdf"
+            download="CV-CESAR_IVAN_BARCENAS_ROSALES.pdf"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider bg-white text-slate-900 hover:bg-indigo-50 transition-colors"
+          >
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            {t.nav.cv}
+          </a>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
